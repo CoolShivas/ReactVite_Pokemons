@@ -1,9 +1,19 @@
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 function App() {
 
   const [num, setNum] = useState()
+
+  useEffect(() => {
+    console.log('After re-rendering the value the useEffect will print the output.')
+
+    async function getDataFromServer() {
+      const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/1`)
+      console.log(response)
+    }
+    getDataFromServer()
+  });
 
   return <>
     <h1> You have selected {num} </h1>
