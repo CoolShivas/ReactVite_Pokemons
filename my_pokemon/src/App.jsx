@@ -9,8 +9,13 @@ function App() {
     console.log('After re-rendering the value the useEffect will print the output.')
 
     async function getDataFromServer() {
-      const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/1`)
-      console.log(response)
+      try {
+        const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/1`)
+        console.log(response)
+      }
+      catch (error) {
+        console.log(error)
+      }
     }
     getDataFromServer()
   });
